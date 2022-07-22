@@ -2,6 +2,8 @@ import React, {ChangeEvent} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {changeDays, changeLocation, setDate} from "../../../bll/searchHotelsReducer";
 import {AppStateType} from "../../../bll/store";
+import {hotelApi} from "../../../dal/api-hotels";
+import {setHotels} from "../../../bll/hotelsListReducer";
 
 export const SearchHotelForm = () => {
 
@@ -23,6 +25,11 @@ export const SearchHotelForm = () => {
             dispatch(changeDays(expression))
         }
     }
+    const generateDate = (date: string, days: string) => {
+        const newDate = new Date(date)
+        newDate.setDate(newDate.getDate() + Number(days))
+        return newDate.toLocaleDateString().split('.').reverse().join('-')
+    }
 
     return <div>
         <input onChange={(event: ChangeEvent<HTMLInputElement>) => {
@@ -33,6 +40,13 @@ export const SearchHotelForm = () => {
         }} value={date}
                type={'date'}/>
         <input value={countOfDays} onChange={changeCountOfDays}/>
-        <button>Найти</button>
+        <button onClick={() => {
+            return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
+                .then((response)=>{
+                    dispatch(setHotels(response.data))
+                })
+        }
+        }>Найти
+        </button>
     </div>
 }

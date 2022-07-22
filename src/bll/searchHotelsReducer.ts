@@ -9,7 +9,7 @@ const initialState = {
     days: '1',
 };
 
-export const searchReducer = (state = initialState, action: any): InitialStateType => {
+export const searchReducer = (state = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case "CHANGE_LOCATION_NAME":
             return {
@@ -33,12 +33,16 @@ export const searchReducer = (state = initialState, action: any): InitialStateTy
 
 
 export const changeLocation = (newLocationName: string) => {
-    return {type: "CHANGE_LOCATION_NAME", newLocationName};
+    return {type: "CHANGE_LOCATION_NAME", newLocationName} as const
 };
 export const setDate = (newDate: string) => {
-    return {type: "SET_DATE", newDate};
+    return {type: "SET_DATE", newDate} as const
 };
 export const changeDays = (countOfDays: string) => {
-    return {type: "CHANGE_COUNT_OF_DAYS", countOfDays};
+    return {type: "CHANGE_COUNT_OF_DAYS", countOfDays} as const
 };
+type ActionsType =
+    | ReturnType<typeof changeLocation>
+    | ReturnType<typeof setDate>
+    | ReturnType<typeof changeDays>
 
