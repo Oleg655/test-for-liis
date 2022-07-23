@@ -9,7 +9,7 @@ function App() {
         <div>
             <Routes>
                 <Route path='/' element={<FirstScreen/>}/>
-                {/*<Route path='/' element={<SecondScreen/>}/>*/}
+                <Route path='/hotels' element={<SecondScreen/>}/>
             </Routes>
 
 

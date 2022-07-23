@@ -9,7 +9,7 @@
   background: url(../../assets/background.png) no-repeat center center;
   background-size: cover;
 
-  &::before {
+  &:before {
     content: "";
     position: absolute;
     top: 0;

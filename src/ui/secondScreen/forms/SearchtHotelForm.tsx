@@ -4,6 +4,7 @@ import {changeDays, changeLocation, setDate} from "../../../bll/searchHotelsRedu
 import {AppStateType} from "../../../bll/store";
 import {hotelApi} from "../../../dal/api-hotels";
 import {setHotels} from "../../../bll/hotelsListReducer";
+import style from './SearchHotelForm.module.scss'
 
 export const SearchHotelForm = () => {
 
@@ -31,22 +32,35 @@ export const SearchHotelForm = () => {
         return newDate.toLocaleDateString().split('.').reverse().join('-')
     }
 
-    return <div>
-        <input onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            return changeLocationName(event.currentTarget.value)
-        }} value={locationName}/>
-        <input onChange={(event: ChangeEvent<HTMLInputElement>) => {
-            return setNewDate(event.currentTarget.value)
-        }} value={date}
-               type={'date'}/>
-        <input value={countOfDays} onChange={changeCountOfDays}/>
-        <button onClick={() => {
-            return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
-                .then((response)=>{
-                    dispatch(setHotels(response.data))
-                })
-        }
-        }>Найти
-        </button>
+    return <div className={style.mainBlock}>
+        <label className={style.label}>
+            Локация
+            <input className={style.input} onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                return changeLocationName(event.currentTarget.value)
+            }} value={locationName}/>
+        </label>
+        <label className={style.label}>
+            Дата заселения
+            <input className={style.input} onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                return setNewDate(event.currentTarget.value)
+            }} value={date}
+                   type={'date'}/>
+        </label>
+        <label className={style.label}>
+            Количество дней
+            <input className={style.input} value={countOfDays} onChange={changeCountOfDays}/>
+        </label>
+
+
+            <button className={style.button} onClick={() => {
+                return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
+                    .then((response) => {
+                        dispatch(setHotels(response.data))
+                    })
+            }
+            }>Найти
+            </button>
+
+
     </div>
 }

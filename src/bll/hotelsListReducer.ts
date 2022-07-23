@@ -51,7 +51,7 @@ export const hotelsListReducer = (state = initialState, action: ActionsType): in
                 ...state,
                 hotelsList: action.hotels.reduce((resultList: ResultHotel[], hotel: Hotel) => {
                     resultList.push({
-                        hotelId: hotel.hotelId,
+                        hotelId: Math.random(),
                         hotelName: hotel.hotelName,
                         priceFrom: hotel.priceFrom,
                         stars: hotel.stars,
@@ -68,6 +68,7 @@ export const hotelsListReducer = (state = initialState, action: ActionsType): in
                 selectedListHotels: [{...action.selectedHotel}, ...state.selectedListHotels]
             }
         case "DELETE_HOTEL_FROM_SELECTED_LIST":
+            debugger
             return {
                 ...state,
                 selectedListHotels: state.selectedListHotels.filter((hotel: ResultHotel) => {
@@ -88,6 +89,7 @@ export const selectHotel = (selectedHotel: ResultHotel) => {
     return {type: 'SELECT_HOTEL', selectedHotel} as const
 }
 export const deleteHotelFromSelectedList = (selectedHotel: ResultHotel) => {
+    debugger
     return {type: 'DELETE_HOTEL_FROM_SELECTED_LIST', selectedHotel} as const
 }
 

@@ -1,0 +1,22 @@
+@import "./src/styles/variables.scss";
+@import "./src/styles/mixins.scss";
+
+.mainBlock {
+  @include flexColumn(space-around);
+  @include formBlockStyle(360px, 410px);
+  .label {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    justify-content: space-between;
+    height: 20%;
+    .input {
+      @include inputStyle();
+    }
+  }
+  .button {
+    @include flexRow();
+    @include buttonStyle();
+
+  }
+}
