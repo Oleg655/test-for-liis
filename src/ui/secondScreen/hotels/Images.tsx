@@ -9,7 +9,7 @@ export const Images = () => {
     const images = useSelector<AppStateType, string[]>(state => state.hotels.images)
 
     return <div className={style.swiperBlock}>
-        <Swiper slidesPerView={3}>
+        <Swiper slidesPerView={3.3}>
             {images.map((image) => {
                 return (
                     <SwiperSlide>

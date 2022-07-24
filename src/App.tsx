@@ -8,6 +8,7 @@ import style from './App.module.scss'
 function App() {
     return (
         <div className={style.App}>
+
             <Routes>
                 <Route path='/' element={<FirstScreen/>}/>
                 <Route path='/hotels' element={<SecondScreen/>}/>

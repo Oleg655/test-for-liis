@@ -1,13 +1,30 @@
 @import "./src/styles/mixins.scss";
+.header{
+  display: flex;
+  justify-content: space-between;
+  .title{
+    @include title();
+  }
+  .logout{
+    display: flex;
+    align-items: center;
+    span{
+      cursor: pointer;
+    }
+  }
+}
 .mainBlock{
   display: flex;
   justify-content: space-evenly;
-  width: 90%;
+  width: 90vw;
   .sideBarBlock{
 
   }
   .presentationBlock{
-    @include formBlockStyle(50%, 700px);
+    @include formBlockStyle(664px, 820px);
+    @include flexColumn(space-between);
+    padding: 1rem;
+    box-sizing: border-box;
 
   }
 }

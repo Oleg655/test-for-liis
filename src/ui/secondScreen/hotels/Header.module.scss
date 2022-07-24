@@ -1,0 +1,26 @@
+@import './src/styles/mixins.scss';
+
+.headerBlock {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  .titlesBlock {
+    display: flex;
+    justify-content: space-between;
+
+    .name {
+      @include title();
+    }
+
+    .cityName {
+      @include title();
+    }
+  }
+
+  span {
+    font-size: 2rem;
+    color: #41522E;
+  }
+
+}

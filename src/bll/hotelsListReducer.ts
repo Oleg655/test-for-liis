@@ -48,7 +48,8 @@ type ActionsType =
 let initialState = {
     hotelsList: [] as ResultHotel[],
     selectedListHotels: [] as ResultHotel[],
-    images: [imgOne, imgTwo, imgThree, imgOne, imgTwo, imgThree]
+    images: [imgOne, imgTwo, imgThree, imgOne, imgTwo, imgThree],
+    cityName: ''
 }
 
 export const hotelsListReducer = (state = initialState, action: ActionsType): initialStateType => {
@@ -56,11 +57,13 @@ export const hotelsListReducer = (state = initialState, action: ActionsType): in
         case 'SET_HOTELS':
             return {
                 ...state,
+                cityName: action.hotels[0].location.name,
                 hotelsList: action.hotels.reduce((resultList: ResultHotel[], hotel: Hotel) => {
                     resultList.push({
+
                         hotelId: hotel.hotelId,
                         hotelName: hotel.hotelName,
-                        priceFrom: hotel.priceFrom,
+                        priceFrom: Math.round(hotel.priceFrom),
                         stars: hotel.stars,
                         city: hotel.location.name
 

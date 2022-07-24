@@ -5,6 +5,7 @@ import {AppStateType} from "../../../bll/store";
 import {hotelApi} from "../../../dal/api-hotels";
 import {setHotels} from "../../../bll/hotelsListReducer";
 import style from './SearchHotelForm.module.scss'
+import {generateDate} from "../../../features/features";
 
 export const SearchHotelForm = () => {
 
@@ -26,11 +27,7 @@ export const SearchHotelForm = () => {
             dispatch(changeDays(expression))
         }
     }
-    const generateDate = (date: string, days: string) => {
-        const newDate = new Date(date)
-        newDate.setDate(newDate.getDate() + Number(days))
-        return newDate.toLocaleDateString().split('.').reverse().join('-')
-    }
+
 
     return <div className={style.mainBlock}>
         <label className={style.label}>
@@ -56,6 +53,7 @@ export const SearchHotelForm = () => {
                 return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
                     .then((response) => {
                         dispatch(setHotels(response.data))
+
                     })
             }
             }>Найти

@@ -7,6 +7,19 @@ const initialState = {
     locationName: "Москва",
     date: today,
     days: '1',
+    months: [
+        'января',
+        "февраля",
+        "марта",
+        "апреля",
+        "мая",
+        "июня",
+        "июля",
+        "августа",
+        "сентября",
+        "ноября",
+        "декабря"
+    ]
 };
 
 export const searchReducer = (state = initialState, action: ActionsType): InitialStateType => {
@@ -26,6 +39,7 @@ export const searchReducer = (state = initialState, action: ActionsType): Initia
                 ...state,
                 date: action.newDate,
             }
+
         default:
             return state
     }
@@ -41,6 +55,7 @@ export const setDate = (newDate: string) => {
 export const changeDays = (countOfDays: string) => {
     return {type: "CHANGE_COUNT_OF_DAYS", countOfDays} as const
 };
+
 type ActionsType =
     | ReturnType<typeof changeLocation>
     | ReturnType<typeof setDate>
