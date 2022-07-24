@@ -1,28 +1,46 @@
 import React from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../../bll/store";
-import {deleteHotelFromSelectedList, ResultHotel} from "../../../bll/hotelsListReducer";
+import {deleteHotelFromSelectedList, ResultHotel, sortByPrice, sortByRating} from "../../../bll/hotelsListReducer";
 import style from './SelectedHotelsForm.module.scss'
+import {Like} from "../../../assets/Like";
+import {Rating} from "../rating/Rating";
+
 
 export const SelectedHotelsForm = () => {
     const selectedListHotels = useSelector<AppStateType, ResultHotel[]>(state => state.hotels.selectedListHotels)
-    console.log(selectedListHotels)
     const dispatch = useDispatch()
 
+    const sortForRating = () => {
+        dispatch(sortByRating())
+    }
+    const sortForPrice = () => {
+        dispatch(sortByPrice())
+    }
+
     return <div className={style.mainBlock}>
-        <h1>Избранное</h1>
-        <input value={'Рейтинг'}/>
-        <input value={'Цена'}/>
+        <h1 className={style.title}>Избранное</h1>
+        <input onClick={sortForRating} className={style.input} value={'Рейтинг'}/>
+        <input onClick={sortForPrice} className={style.input} value={'Цена'}/>
         <div className={style.listBlock}>
             {selectedListHotels.map((hotel: ResultHotel) => {
-                return <div key={hotel.hotelId}>
-                <span onClick={() => {
-                    debugger
-                    return dispatch(deleteHotelFromSelectedList(hotel))
-                }
-                }>{hotel.hotelName}</span>
-                    <span>{hotel.stars}</span>
-                    <span>{hotel.priceFrom}</span>
+                return <div className={style.hotelForm} key={hotel.hotelId}>
+                    <div className={style.hotelDescription}>
+                        <span>{hotel.hotelName}</span>
+                        <Rating stars={hotel.stars}/>
+                    </div>
+                    <div className={style.price}>
+                        Price:
+                    </div>
+                    <div className={style.likeBlock}>
+                        <Like onClick={() => {
+                            return dispatch(deleteHotelFromSelectedList(hotel))
+                        }
+                        } className={style.like}/>
+                        <span>{hotel.priceFrom}</span>
+                    </div>
+
+
                 </div>
             })}
         </div>

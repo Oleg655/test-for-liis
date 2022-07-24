@@ -1,3 +1,7 @@
+import imgOne from '../assets/imgOne.png'
+import imgTwo from '../assets/imgTwo.png'
+import imgThree from '../assets/imgThree.png'
+
 export type Hotel = {
     hotelId: number
     hotelName: string
@@ -38,10 +42,13 @@ type ActionsType =
     | ReturnType<typeof setHotels>
     | ReturnType<typeof selectHotel>
     | ReturnType<typeof deleteHotelFromSelectedList>
+    | ReturnType<typeof sortByRating>
+    | ReturnType<typeof sortByPrice>
 
 let initialState = {
-    hotelsList: [] as ResultHotel[] | [],
-    selectedListHotels: [] as ResultHotel[] | []
+    hotelsList: [] as ResultHotel[],
+    selectedListHotels: [] as ResultHotel[],
+    images: [imgOne, imgTwo, imgThree, imgOne, imgTwo, imgThree]
 }
 
 export const hotelsListReducer = (state = initialState, action: ActionsType): initialStateType => {
@@ -51,7 +58,7 @@ export const hotelsListReducer = (state = initialState, action: ActionsType): in
                 ...state,
                 hotelsList: action.hotels.reduce((resultList: ResultHotel[], hotel: Hotel) => {
                     resultList.push({
-                        hotelId: Math.random(),
+                        hotelId: hotel.hotelId,
                         hotelName: hotel.hotelName,
                         priceFrom: hotel.priceFrom,
                         stars: hotel.stars,
@@ -62,19 +69,30 @@ export const hotelsListReducer = (state = initialState, action: ActionsType): in
                 }, [])
             }
         case "SELECT_HOTEL":
-            debugger
-            return {
+            return state.selectedListHotels.includes(action.selectedHotel) ? state : {
                 ...state,
-                selectedListHotels: [{...action.selectedHotel}, ...state.selectedListHotels]
+                selectedListHotels: [action.selectedHotel, ...state.selectedListHotels]
             }
         case "DELETE_HOTEL_FROM_SELECTED_LIST":
-            debugger
             return {
                 ...state,
                 selectedListHotels: state.selectedListHotels.filter((hotel: ResultHotel) => {
-                    return hotel.hotelId !== action.selectedHotel.hotelId
+                    return hotel !== action.selectedHotel
                 })
-
+            }
+        case "SORT_BY_RATING":
+            return {
+                ...state,
+                selectedListHotels: [...state.selectedListHotels.sort((a, b) => {
+                    return b.stars - a.stars
+                })]
+            }
+        case "SORT_BY_PRICE":
+            return {
+                ...state,
+                selectedListHotels: [...state.selectedListHotels.sort((a, b) => {
+                    return a.priceFrom - b.priceFrom
+                })]
             }
         default:
             return state
@@ -85,11 +103,15 @@ export const setHotels = (hotels: Hotel[]) => {
     return {type: 'SET_HOTELS', hotels} as const
 }
 export const selectHotel = (selectedHotel: ResultHotel) => {
-    debugger
     return {type: 'SELECT_HOTEL', selectedHotel} as const
 }
 export const deleteHotelFromSelectedList = (selectedHotel: ResultHotel) => {
-    debugger
     return {type: 'DELETE_HOTEL_FROM_SELECTED_LIST', selectedHotel} as const
+}
+export const sortByRating = () => {
+    return {type: 'SORT_BY_RATING'} as const
+}
+export const sortByPrice = () => {
+    return {type: 'SORT_BY_PRICE'} as const
 }
 

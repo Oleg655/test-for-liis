@@ -1,0 +1,13 @@
+@import "./src/styles/mixins.scss";
+.mainBlock{
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  .sideBarBlock{
+
+  }
+  .presentationBlock{
+    @include formBlockStyle(50%, 700px);
+
+  }
+}

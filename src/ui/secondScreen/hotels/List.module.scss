@@ -1,0 +1,42 @@
+.mainBlockForList{
+  width: 100%;
+  height: 60%;
+  overflow-y: auto;
+  .hotelForm {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid grey;
+    width: 100%;
+    height: 20%;
+    .home{
+      fill: green;
+    }
+    .hotelDescription{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+    .priceBlock{
+      display: flex;
+      flex-direction: column;
+      justify-content: end;
+
+    }
+    .likeBlock{
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      justify-content: space-between;
+      .heart{
+
+       cursor: pointer;
+
+        &:hover{
+          fill: red;
+        }
+
+
+      }
+    }
+  }
+}
