@@ -39,7 +39,7 @@ export const List = () => {
                     />
 
                     <span>
-                        {hotel.priceFrom}
+                        {hotel.priceFrom}₽
                     </span>
                 </div>
             </div>

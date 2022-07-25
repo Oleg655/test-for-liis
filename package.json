@@ -2,7 +2,7 @@
   "name": "test-for-liis",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://yourusername.github.io/test-for-liis",
+  "homepage": "https://Oleg655.github.io/test-for-liis",
   "dependencies": {
     "@redux-saga/types": "^1.1.0",
     "@testing-library/jest-dom": "^5.14.1",

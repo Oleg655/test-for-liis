@@ -1,3 +1,4 @@
+
 type InitialStateType = typeof initialState
 
 const defaultDate = new Date();
@@ -45,7 +46,6 @@ export const searchReducer = (state = initialState, action: ActionsType): Initia
     }
 }
 
-
 export const changeLocation = (newLocationName: string) => {
     return {type: "CHANGE_LOCATION_NAME", newLocationName} as const
 };
@@ -60,4 +60,5 @@ type ActionsType =
     | ReturnType<typeof changeLocation>
     | ReturnType<typeof setDate>
     | ReturnType<typeof changeDays>
+
 

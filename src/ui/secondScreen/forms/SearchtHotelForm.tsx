@@ -1,13 +1,27 @@
-import React, {ChangeEvent} from 'react'
+import React, {ChangeEvent, useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux";
 import {changeDays, changeLocation, setDate} from "../../../bll/searchHotelsReducer";
 import {AppStateType} from "../../../bll/store";
-import {hotelApi} from "../../../dal/api-hotels";
-import {setHotels} from "../../../bll/hotelsListReducer";
 import style from './SearchHotelForm.module.scss'
-import {generateDate} from "../../../features/features";
 
 export const SearchHotelForm = () => {
+
+    // useEffect(()=>{
+    //     hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
+    //         .then((response) => {
+    //             dispatch(setHotels(response.data))
+    //
+    //         })
+    // },[])
+
+//     onClick={() => {
+//         return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
+//             .then((response) => {
+//                 dispatch(setHotels(response.data))
+//
+//             })
+//     }
+// }
 
     const dispatch = useDispatch()
     const locationName = useSelector<AppStateType, string>(state => state.searchData.locationName)
@@ -26,6 +40,10 @@ export const SearchHotelForm = () => {
         if (regex.test(expression)) {
             dispatch(changeDays(expression))
         }
+    }
+
+    const handleSearch = () => {
+        dispatch({type: 'GET_HOTELS'})
     }
 
 
@@ -49,16 +67,9 @@ export const SearchHotelForm = () => {
         </label>
 
 
-            <button className={style.button} onClick={() => {
-                return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
-                    .then((response) => {
-                        dispatch(setHotels(response.data))
-
-                    })
-            }
-            }>Найти
+        <button className={style.button} onClick={handleSearch}>Найти
             </button>
 
 
-    </div>
-}
+            </div>
+        }

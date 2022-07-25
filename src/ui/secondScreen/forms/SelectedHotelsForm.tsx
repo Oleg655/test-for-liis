@@ -45,7 +45,7 @@ export const SelectedHotelsForm = () => {
                             return dispatch(deleteHotelFromSelectedList(hotel))
                         }
                         } className={style.like}/>
-                        <span>{hotel.priceFrom}</span>
+                        <span>{hotel.priceFrom}₽</span>
                     </div>
 
 

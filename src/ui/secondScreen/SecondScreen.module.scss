@@ -17,11 +17,14 @@
   display: flex;
   justify-content: space-evenly;
   width: 90vw;
+  height: 61vw;
   .sideBarBlock{
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
   .presentationBlock{
-    @include formBlockStyle(664px, 820px);
+    @include formBlockStyle(664px, 100%);
     @include flexColumn(space-between);
     padding: 1rem;
     box-sizing: border-box;
