@@ -28,6 +28,9 @@
     @include flexColumn(space-between);
     padding: 1rem;
     box-sizing: border-box;
+    .countSelectedHotels{
+      width: 100%;
+    }
 
   }
 }

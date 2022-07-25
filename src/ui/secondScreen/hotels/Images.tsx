@@ -12,7 +12,7 @@ export const Images = () => {
         <Swiper slidesPerView={3.3}>
             {images.map((image) => {
                 return (
-                    <SwiperSlide>
+                    <SwiperSlide key={Math.random()} >
                         <img src={image}/>
                     </SwiperSlide>
                 );

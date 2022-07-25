@@ -20,7 +20,7 @@ export const List = () => {
         {hotelsList.map((hotel: ResultHotel) => {
             return <div className={style.hotelForm} key={hotel.hotelId}>
 
-                <div className={style.blockForHome}>
+                <div  className={style.blockForHome}>
                     <Home className={style.home}/>
                 </div>
 

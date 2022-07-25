@@ -6,22 +6,11 @@ import style from './SearchHotelForm.module.scss'
 
 export const SearchHotelForm = () => {
 
-    // useEffect(()=>{
-    //     hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
-    //         .then((response) => {
-    //             dispatch(setHotels(response.data))
-    //
-    //         })
-    // },[])
+    useEffect(() => {
 
-//     onClick={() => {
-//         return hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
-//             .then((response) => {
-//                 dispatch(setHotels(response.data))
-//
-//             })
-//     }
-// }
+        dispatch({type: 'GET_HOTELS'})
+
+    }, [])
 
     const dispatch = useDispatch()
     const locationName = useSelector<AppStateType, string>(state => state.searchData.locationName)
@@ -42,7 +31,7 @@ export const SearchHotelForm = () => {
         }
     }
 
-    const handleSearch = () => {
+    const handleSearchClick = () => {
         dispatch({type: 'GET_HOTELS'})
     }
 
@@ -67,9 +56,9 @@ export const SearchHotelForm = () => {
         </label>
 
 
-        <button className={style.button} onClick={handleSearch}>Найти
-            </button>
+        <button className={style.button} onClick={handleSearchClick}>Найти
+        </button>
 
 
-            </div>
-        }
+    </div>
+}

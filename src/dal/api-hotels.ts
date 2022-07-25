@@ -1,4 +1,5 @@
-import axios from "axios";
+import axios, {AxiosResponse} from "axios";
+import {Hotel} from "../bll/hotelsListReducer";
 
 const instance = axios.create({
     baseURL: 'https://engine.hotellook.com/api/v2'
@@ -7,6 +8,6 @@ const instance = axios.create({
 export const hotelApi = {
     getHotel(location: string, dataIn: string, dateOut: string) {
         return instance
-        .get(`cache.json?location=${location}&currency=rub&checkIn=${dataIn}&checkOut=${dateOut}&limit=10`)
+        .get<AxiosResponse,Hotel[]>(`cache.json?location=${location}&currency=rub&checkIn=${dataIn}&checkOut=${dateOut}&limit=10`)
     }
 }

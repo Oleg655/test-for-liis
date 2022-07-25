@@ -35,7 +35,7 @@ export const SelectedHotelsForm = () => {
                     <div className={style.hotelDescription}>
                         <span>{hotel.hotelName}</span>
                         <span>{generateMonth(date,months)}</span>
-                        <Rating stars={hotel.stars}/>
+                        <Rating stars={hotel.stars} />
                     </div>
                     <div className={style.price}>
                         Price:

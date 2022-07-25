@@ -4,6 +4,7 @@ import {Star} from "../../../assets/Star";
 
 type Rating = {
     stars: number
+
 }
 
 export const Rating = (props: Rating) => {
@@ -13,10 +14,10 @@ export const Rating = (props: Rating) => {
 
     return <div>
         {liteStars.map((star) => {
-            return <Star className={style.lightStar}/>
+            return <Star  className={style.lightStar}/>
         })}
         {grayStars.map((star)=>{
-            return <Star className={style.grayStar}/>
+            return <Star  className={style.grayStar}/>
         })}
     </div>
 }

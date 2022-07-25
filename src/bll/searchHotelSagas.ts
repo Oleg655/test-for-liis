@@ -3,18 +3,22 @@ import {hotelApi} from "../dal/api-hotels";
 import {SagaIterator} from "@redux-saga/types";
 import {setHotels} from "./hotelsListReducer";
 import {generateDate} from "../features/features";
+import axios from "axios";
 
 const requestHotels = async (locationName: string, date: string, countOfDays: string) => {
     try {
         const response = await hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
         return response
     } catch (error) {
+        if(axios.isAxiosError(error) && error.response){
+           console.log(error.response.data)
+        }
 
     }
 
 }
 
-export function* workSetHotelsDataSaga(): SagaIterator { //запускается в зависимости от какого-либо экшна
+export function* workSetHotelsDataSaga(): SagaIterator {
     const locationName = yield select(store => store.searchData.locationName)
     const date = yield select(store => store.searchData.date)
     const days = yield select(store => store.searchData.days)

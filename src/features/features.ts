@@ -10,3 +10,13 @@ export const generateDate = (date: string, days: string) => {
     newDate.setDate(newDate.getDate() + Number(days))
     return newDate.toLocaleDateString().split('.').reverse().join('-')
 }
+
+export const generateNameForDays = (countSelectedHotels: number) => {
+    if(countSelectedHotels === 1){
+        return 'отель'
+    }if(countSelectedHotels === 0 || countSelectedHotels > 4){
+        return 'отелей'
+    }if(countSelectedHotels > 1 && countSelectedHotels < 5){
+        return 'отеля'
+    }
+}
