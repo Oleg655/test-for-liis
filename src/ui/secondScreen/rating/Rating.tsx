@@ -14,10 +14,10 @@ export const Rating = (props: Rating) => {
 
     return <div>
         {liteStars.map((star) => {
-            return <Star  className={style.lightStar}/>
+            return <Star key={Math.random()} className={style.lightStar}/>
         })}
         {grayStars.map((star)=>{
-            return <Star  className={style.grayStar}/>
+            return <Star key={Math.random()} className={style.grayStar}/>
         })}
     </div>
 }

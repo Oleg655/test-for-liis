@@ -25,8 +25,8 @@ export const SelectedHotelsForm = () => {
     return <div className={style.mainBlock}>
         <h1 className={style.title}>Избранное</h1>
         <div>
-            <input onClick={sortForRating} className={style.input} value={'Рейтинг'}/>
-            <input onClick={sortForPrice} className={style.input} value={'Цена'}/>
+            <input onClick={sortForRating} className={style.input} placeholder={'Рейтинг'}/>
+            <input onClick={sortForPrice} className={style.input} placeholder={'Цена'}/>
         </div>
 
         <div className={style.listBlock}>

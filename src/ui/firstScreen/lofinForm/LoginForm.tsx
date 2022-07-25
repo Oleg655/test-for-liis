@@ -34,11 +34,12 @@ export const LoginForm = () => {
                     message: 'Непрвильный email или пароль'
                 }
             },)}/>
+            <div className={style.error}>
+                {errors.email && <div>{errors.email.message}</div>}
+            </div>
         </label>
 
-        <div>
-            {errors.email && <div>{errors.email.message}</div>}
-        </div>
+
         <label className={style.label} >
             Пароль
             <input className={style.input} {...register('password', {
@@ -48,11 +49,12 @@ export const LoginForm = () => {
                     message: 'Пароль должен иметь латинские буквы'
                 }
             },)}/>
+            <div className={style.error}>
+                {errors.password && <div>{errors.password.message}</div>}
+            </div>
         </label>
 
-        <div>
-            {errors.password && <div>{errors.password.message}</div>}
-        </div>
+
 
         <button className={style.button}>Войти</button>
     </form>

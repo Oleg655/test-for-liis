@@ -13,6 +13,12 @@
     @include labelForInputStyle();
     .input{
       @include inputStyle();
+
+    }
+    .error{
+      color: red;
+      display: flex;
+      justify-content: center;
     }
   }
 .button{
