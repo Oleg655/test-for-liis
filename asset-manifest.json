@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/test-for-liis/static/css/main.54454ad4.css",
+    "main.css": "/test-for-liis/static/css/main.5146fde6.css",
     "main.js": "/test-for-liis/static/js/main.f63c0fcd.js",
     "static/js/787.005834f7.chunk.js": "/test-for-liis/static/js/787.005834f7.chunk.js",
     "static/media/background.png": "/test-for-liis/static/media/background.53a28adeb7721ccf3ba5.png",
@@ -8,12 +8,12 @@
     "static/media/imgOne.png": "/test-for-liis/static/media/imgOne.91ef41ae35bf27f0527a.png",
     "static/media/imgTwo.png": "/test-for-liis/static/media/imgTwo.c35a009287a64d0bee79.png",
     "index.html": "/test-for-liis/index.html",
-    "main.54454ad4.css.map": "/test-for-liis/static/css/main.54454ad4.css.map",
+    "main.5146fde6.css.map": "/test-for-liis/static/css/main.5146fde6.css.map",
     "main.f63c0fcd.js.map": "/test-for-liis/static/js/main.f63c0fcd.js.map",
     "787.005834f7.chunk.js.map": "/test-for-liis/static/js/787.005834f7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.54454ad4.css",
+    "static/css/main.5146fde6.css",
     "static/js/main.f63c0fcd.js"
   ]
 }
