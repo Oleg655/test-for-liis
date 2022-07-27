@@ -6,8 +6,8 @@ const instance = axios.create({
 })
 
 export const hotelApi = {
-    getHotel(location: string, dataIn: string, dateOut: string) {
+    getHotel(location: string, dateIn: string, dateOut: string) {
         return instance
-        .get<AxiosResponse,Hotel[]>(`cache.json?location=${location}&currency=rub&checkIn=${dataIn}&checkOut=${dateOut}&limit=10`)
+        .get<AxiosResponse,Hotel[]>(`cache.json?location=${location}&currency=rub&checkIn=${dateIn}&checkOut=${dateOut}&limit=10`)
     }
 }

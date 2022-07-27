@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeDays, changeLocation, setDate} from "../../../bll/searchHotelsReducer";
 import {AppStateType} from "../../../bll/store";
 import style from './SearchHotelForm.module.scss'
+import {format} from "date-fns";
 
 export const SearchHotelForm = () => {
 
@@ -21,6 +22,7 @@ export const SearchHotelForm = () => {
         return dispatch(changeLocation(locationName))
     }
     const setNewDate = (newDate: string) => {
+
         return dispatch(setDate(newDate))
     }
     const changeCountOfDays = (event: ChangeEvent<HTMLInputElement>) => {
@@ -45,10 +47,12 @@ export const SearchHotelForm = () => {
         </label>
         <label className={style.label}>
             Дата заселения
-            <input className={style.input} onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                return setNewDate(event.currentTarget.value)
-            }} value={date}
-                   type={'date'}/>
+            <input
+                className={style.input}
+                onChange={(event: ChangeEvent<HTMLInputElement>) => setNewDate(event.currentTarget.value)}
+                value={date}
+                type={'date'}
+            />
         </label>
         <label className={style.label}>
             Количество дней

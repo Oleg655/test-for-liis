@@ -1,10 +1,18 @@
-
+import {generateToday} from "../features/features";
+import { format, compareAsc } from 'date-fns'
 type InitialStateType = typeof initialState
 
 const defaultDate = new Date();
-const today = defaultDate.toLocaleDateString().split('.').reverse().join('-')
+const hi = defaultDate.toLocaleDateString().split('.').reverse().join('-')
+
+//const today = format(new Date(),'yyyy-MM-dd')
+
+
+const today = generateToday(defaultDate)
+
 
 const initialState = {
+
     locationName: "Москва",
     date: today,
     days: '1',
@@ -36,6 +44,7 @@ export const searchReducer = (state = initialState, action: ActionsType): Initia
                 days: action.countOfDays,
             };
         case "SET_DATE":
+            debugger
             return {
                 ...state,
                 date: action.newDate,
@@ -50,6 +59,7 @@ export const changeLocation = (newLocationName: string) => {
     return {type: "CHANGE_LOCATION_NAME", newLocationName} as const
 };
 export const setDate = (newDate: string) => {
+    debugger
     return {type: "SET_DATE", newDate} as const
 };
 export const changeDays = (countOfDays: string) => {

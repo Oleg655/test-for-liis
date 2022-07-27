@@ -9,6 +9,7 @@ const requestHotels = async (locationName: string, date: string, countOfDays: st
     try {
         const response = await hotelApi.getHotel(locationName, date, generateDate(date, countOfDays))
         return response
+
     } catch (error) {
         if(axios.isAxiosError(error) && error.response){
            console.log(error.response.data)
