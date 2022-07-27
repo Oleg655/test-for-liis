@@ -3,7 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeDays, changeLocation, setDate} from "../../../bll/searchHotelsReducer";
 import {AppStateType} from "../../../bll/store";
 import style from './SearchHotelForm.module.scss'
-import {format} from "date-fns";
 
 export const SearchHotelForm = () => {
 

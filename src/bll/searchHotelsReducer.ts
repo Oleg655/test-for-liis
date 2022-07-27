@@ -1,11 +1,9 @@
 import {generateToday} from "../features/features";
-import { format, compareAsc } from 'date-fns'
 type InitialStateType = typeof initialState
 
 const defaultDate = new Date();
 const hi = defaultDate.toLocaleDateString().split('.').reverse().join('-')
 
-//const today = format(new Date(),'yyyy-MM-dd')
 
 
 const today = generateToday(defaultDate)
