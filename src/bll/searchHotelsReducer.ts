@@ -1,12 +1,12 @@
-import {generateToday} from "../features/features";
+import {formatTime} from "../features/features";
+
 type InitialStateType = typeof initialState
 
-const defaultDate = new Date();
-const hi = defaultDate.toLocaleDateString().split('.').reverse().join('-')
+const date = new Date();
 
 
 
-const today = generateToday(defaultDate)
+const today = formatTime(date)
 
 
 const initialState = {

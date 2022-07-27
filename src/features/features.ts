@@ -8,10 +8,18 @@ export const generateMonth = (stringDate: string, ArrayMonths: string[]) => {
 export const generateDate = (date: string, days: string) => {
     let newDate = new Date(date)
     newDate.setDate(newDate.getDate() + Number(days))
-    const result = generateToday(newDate)
-    return result
+    return formatTime(newDate)
 }
 
+export function formatTime(date: Date) {
+    debugger
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+
+
+    return `${year}-${month}-${day}`
+}
 
 export const generateNameForDays = (countSelectedHotels: number) => {
     if (countSelectedHotels === 1) {
@@ -24,23 +32,5 @@ export const generateNameForDays = (countSelectedHotels: number) => {
         return 'отеля'
     }
 }
-export const generateToday = (date: Date): string => {
-    let stringDate = date.toLocaleDateString()
-    if (stringDate.includes('/')) {
-        let reverse = stringDate.split('/').reverse()
-        const day = reverse[1]
-        const month = reverse[2]
-        reverse[1] = month
-        reverse[2] = day
-        return `${reverse[0]}-${Number(reverse[1]) < 10 ? "0" + reverse[1] : reverse[1]}-${
-            Number(reverse[2]) < 10 ? "0" + reverse[2] : reverse[2]
-        }`
-    }
-    if (stringDate.includes('.')) {
-        let newDate = stringDate.split('.').reverse().join('-')
 
-        return newDate
-    }
-    return ''
-}
 
